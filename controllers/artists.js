@@ -41,3 +41,13 @@ exports.delete = function(req, res) {
     }
   })
 }
+exports.upDate = function(req, res) {
+  artist.upDate(req.params.id, req.body, function(err, result){
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  })
+}

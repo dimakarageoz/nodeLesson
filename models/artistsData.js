@@ -24,3 +24,11 @@ exports.delete = function(idDelete, cb) {
     cb(err, result);
   })
 }
+exports.upDate = function(id, body, cb) {
+  db.get().collection('artists').updateOne(
+    { _id: objectID(id) },
+    { name: body.name},
+    function(err, res){
+    cb(err, res)
+  })
+}

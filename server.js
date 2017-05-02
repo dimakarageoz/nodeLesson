@@ -25,39 +25,7 @@ app.get('/' , function(req, res){
   res.send('Hellow API');
 })
 app.get('/artist', artistController.all);
-
 app.get('/artist/:id', artistController.one);
-
 app.post('/artist', artistController.addUser);
-
-app.put('/artist/:id' , function(req, res){
-
-  db.get().collection('artists').updateOne(
-    {_id: objectID(req.params.id)},
-    { name: req.body.name},
-    function(err, result){
-      if(err){
-        console.log(err);
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(200);
-      }
-    }
-  )
-})
-
+app.put('/artist/:id', artistController.upDate);
 app.delete('/artist/:id', artistController.delete);
-
-// app.delete('/artist/:id', function(req, res){
-//   db.get().collection('artists').deleteOne(
-//     {_id: objectID(req.params.id)},
-//     function(err, result){
-//       if(err){
-//         console.log(err);
-//         res.sendStatus(500);
-//       } else {
-//         res.sendStatus(200);
-//       }
-//     }
-//   )
-// })
